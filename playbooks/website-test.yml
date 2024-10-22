@@ -40,3 +40,16 @@
         - "a.stat.pw_name == 'root'"
       fail_msg: "index /var/www/html/index.html does not exist or is not owned by root"
       success_msg: "/var/www/html/index.html exists and is owned by root"
+
+  - name: Stat vars.html
+    stat:
+      path: /var/www/html/vars.html
+    register: v
+
+  - name: confirm that vars.html exists & owned by root
+    assert:
+      that:
+        - "v.stat.exists"
+        - "v.stat.pw_name == 'root'"
+      fail_msg: "index /var/www/html/vars.html does not exist or is not owned by root"
+      success_msg: "/var/www/html/vars.html exists and is owned by root"
