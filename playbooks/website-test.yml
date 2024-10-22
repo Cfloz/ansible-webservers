@@ -27,3 +27,16 @@
         - "i.stat.exists"
       fail_msg: "/usr/sbin/apache2 does not exist"
       success_msg: "/usr/sbin/apache2 exists"
+
+  - name: Check Stat index.html
+    stat:
+      path: /var/www/html/index.html
+    register: a
+
+  - name: confirm that index.html exists & owned by root
+    assert:
+      that:
+        - "a.stat.exists"
+        - "a.stat.pw_name == 'root'"
+      fail_msg: "index /var/www/html/index.html does not exist or is not owned by root"
+      success_msg: "/var/www/html/index.html exists and is owned by root"
