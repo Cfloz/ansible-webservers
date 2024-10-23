@@ -31,5 +31,6 @@ pipeline {
             sh 'docker run --rm -v $WORKSPACE/playbook:/data cytopia/ansible-lint:4 website-update.yml'
             sh 'docker run --rm -v $WORKSPACE/playbook:/data cytopia/ansible-lint:4 website-test.yml'
           }
+        }
     }
 }
