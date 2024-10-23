@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent agentfarm
     stages {
         stage('Delete the workspace') {
       steps {
